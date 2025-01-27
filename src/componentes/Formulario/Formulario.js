@@ -4,21 +4,13 @@ import ListaSuspensa from "../ListaSuspensa/ListaSuspensa";
 import Botao from "../Botao/Botao";
 import { useState } from "react";
 
-const Formulario = ({aoCadastrar}) => {
+const Formulario = ({aoCadastrar, nomeTimes}) => {
     const [nome, setNome] = useState("");
     const [cargo, setCargo] = useState("");
     const [imagem, setImagem] = useState("");
     const [time, setTime] = useState("");
 
-    const times = [
-        'Programação',
-        'Front-End',
-        'Data Science',
-        'Devops',
-        'UX e Design',
-        'Mobile',
-        'Inovação e Gestão'
-    ];
+    const times = nomeTimes;
 
     const aoSalver = (evento) => {
         evento.preventDefault();

@@ -8,8 +8,8 @@ const ListaSuspensa = (props) => {
     return (
         <div className="campo-select">
             <label>{props.label}</label>
-            <select required={props.obrigatorio} value={props.value} onChange={aoSelecionado}>
-                {props.itens.map(item => <option key={item}>{item}</option>)}
+            <select required={props.obrigatorio} value={props.valor} onChange={aoSelecionado}>
+                {props.itens.map(item => <option key={item.nome}>{item.nome}</option>)}
             </select>
         </div>
     )
