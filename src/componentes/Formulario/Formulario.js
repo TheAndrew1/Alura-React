@@ -4,7 +4,7 @@ import ListaSuspensa from "../ListaSuspensa/ListaSuspensa";
 import Botao from "../Botao/Botao";
 import { useState } from "react";
 
-const Formulario = () => {
+const Formulario = ({aoCadastrar}) => {
     const [nome, setNome] = useState("");
     const [cargo, setCargo] = useState("");
     const [imagem, setImagem] = useState("");
@@ -22,7 +22,12 @@ const Formulario = () => {
 
     const aoSalver = (evento) => {
         evento.preventDefault();
-        console.log(`${nome}, ${cargo}, ${imagem}, ${time}`)
+        aoCadastrar({
+            nome,
+            cargo,
+            imagem,
+            time
+        })
     }
 
     return (
