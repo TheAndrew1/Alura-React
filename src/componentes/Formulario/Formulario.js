@@ -17,7 +17,11 @@ const Formulario = ({aoCadastrar, times}) => {
             cargo,
             imagem,
             time
-        })
+        });
+        setNome("");
+        setCargo("");
+        setImagem("");
+        setTime("");
     }
 
     return (
