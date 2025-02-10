@@ -6,7 +6,7 @@ import Time from './componentes/Time/Time';
 function App() {
   const [colaboradores, setColaboradores] = useState([]);
 
-  const times = [
+  const [times, setTimes] = useState([
     {
       nome: 'Programação',
       corPrimaria: '#57C278',
@@ -42,11 +42,23 @@ function App() {
       corPrimaria: '#FF8A29',
       corSecundaria: '#FFEEDF',
     }
-];
+  ]);
 
   const novoColaboradorAdicionado = (colaborador) => {
-    debugger
     setColaboradores([...colaboradores, colaborador]);
+  }
+
+  const deletarColaborador = () => {
+    console.log('Deletando colaborador');
+  }
+
+  function mudarCorDoTime(cor, nome) {
+    setTimes(times.map(time => {
+      if(time.nome == nome) {
+        time.corPrimaria = cor;
+      }
+      return time;
+    }))
   }
 
   return (
@@ -60,6 +72,8 @@ function App() {
           corPrimaria={time.corPrimaria}
           corSecundaria={time.corSecundaria}
           colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+          aoDeletar={deletarColaborador}
+          mudarCor={mudarCorDoTime}
         />
       )}
     </div>
