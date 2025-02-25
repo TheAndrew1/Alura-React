@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Banner from './componentes/Banner/Banner';
 import Formulario from './componentes/Formulario/Formulario';
 import Time from './componentes/Time/Time';
@@ -100,6 +100,14 @@ function App() {
   function cadastrarTime(novoTime) {
     setTimes([...times, { ...novoTime, id: uuidv4() }])
   }
+
+  const prevColaboradoresRef = useRef(colaboradores.length);
+
+  useEffect(() => {
+    if (colaboradores.length > prevColaboradoresRef.current) {
+      alert("Colaborador adicionado");
+    }
+  }, [colaboradores]);
 
   return (
     <div className="App">
