@@ -49,21 +49,24 @@ function App() {
       nome: 'JULIANA AMOASEI',
       cargo: 'Desenvolvedora de software e instrutora',
       imagem: 'https://www.alura.com.br/assets/img/lideres/juliana-amoasei.1647533644.jpeg',
-      time: times[0].nome
+      time: times[0].nome,
+      favorito: false
     },
     {
       id: uuidv4(),
       nome: 'JULIANA AMOASEI',
       cargo: 'Desenvolvedora de software e instrutora',
       imagem: 'https://www.alura.com.br/assets/img/lideres/juliana-amoasei.1647533644.jpeg',
-      time: times[1].nome
+      time: times[1].nome,
+      favorito: false
     },
     {
       id: uuidv4(),
       nome: 'JULIANA AMOASEI',
       cargo: 'Desenvolvedora de software e instrutora',
       imagem: 'https://www.alura.com.br/assets/img/lideres/juliana-amoasei.1647533644.jpeg',
-      time: times[2].nome
+      time: times[2].nome,
+      favorito: false
     }
   ]);
 
@@ -73,6 +76,16 @@ function App() {
 
   const deletarColaborador = (id) => {
     setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id));
+  }
+
+  function resolverFavorito(id) {
+    setColaboradores(colaboradores.map(colaborador => {
+      if(colaborador.id === id) {
+        colaborador.favorito = !colaborador.favorito;
+      }
+
+      return colaborador;
+    }))
   }
 
   function mudarCorDoTime(cor, id) {
@@ -98,6 +111,7 @@ function App() {
           time={time}
           colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
           aoDeletar={deletarColaborador}
+          aoFavoritar={resolverFavorito}
           mudarCor={mudarCorDoTime}
         />
       )}

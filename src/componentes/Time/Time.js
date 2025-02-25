@@ -14,6 +14,7 @@ const Time = (props) => {
                         corFundo={props.time.cor}
                         colaborador={colaborador}
                         aoDeletar={props.aoDeletar}
+                        aoFavoritar={props.aoFavoritar}
                     />
                 } )}
             </div>
