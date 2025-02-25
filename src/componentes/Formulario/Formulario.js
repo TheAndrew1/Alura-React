@@ -4,11 +4,14 @@ import ListaSuspensa from "../ListaSuspensa/ListaSuspensa";
 import Botao from "../Botao/Botao";
 import { useState } from "react";
 
-const Formulario = ({aoCadastrar, times}) => {
+const Formulario = ({ aoCadastrarTime, aoCadastrar, times }) => {
     const [nome, setNome] = useState("");
     const [cargo, setCargo] = useState("");
     const [imagem, setImagem] = useState("");
     const [time, setTime] = useState("");
+
+    const [nomeTIme, setNomeTIme] = useState("");
+    const [cor, setCor] = useState("");
 
     const aoSalver = (evento) => {
         evento.preventDefault();
@@ -56,6 +59,31 @@ const Formulario = ({aoCadastrar, times}) => {
                 />
                 <Botao>
                     Criar Card
+                </Botao>
+            </form>
+            <form onSubmit={(evento) => {
+                evento.preventDefault();
+                aoCadastrarTime({nome: nomeTIme, cor: cor});
+                setNomeTIme("");
+                setCor("");
+            }}>
+                <h2>Preencha os dados para criar um novo time</h2>
+                <CampoTexto 
+                    obrigatorio
+                    label="Nome"
+                    placeholder="Digite o nome do time"
+                    valor={nomeTIme}
+                    aoAlterado={valor => setNomeTIme(valor)}
+                />
+                <CampoTexto
+                    obrigatorio={true}
+                    label="Cor"
+                    placeholder="Digite a cor do time"
+                    valor={cor}
+                    aoAlterado={valor => setCor(valor)}
+                />
+                <Botao>
+                    Criar um novo time
                 </Botao>
             </form>
         </section>
