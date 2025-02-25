@@ -101,12 +101,14 @@ function App() {
     setTimes([...times, { ...novoTime, id: uuidv4() }])
   }
 
-  const prevColaboradoresRef = useRef(colaboradores.length);
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   useEffect(() => {
-    if (colaboradores.length > prevColaboradoresRef.current) {
-      alert("Colaborador adicionado");
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      return;
     }
+    alert("Alteração realizada");
   }, [colaboradores]);
 
   return (
